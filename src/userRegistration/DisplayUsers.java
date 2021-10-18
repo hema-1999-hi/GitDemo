@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import userRegistration.dao.UserDAO;
 import userRegistration.model.User;
-import userRegistration.service.UserService;
 
 /**
  * Servlet implementation class DisplayUsers
@@ -42,14 +40,8 @@ public class DisplayUsers extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Display user start");
 		//2. should call service for DB data 
-		UserService service = new UserService();
-		List<User> userList = service.getAllUsers();
-
-		request.setAttribute("userlist", userList);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("DisplayUser.jsp");
-		dispatcher.forward(request, response);
-
-		/*		Connection con = null;
+		
+						Connection con = null;
 		Statement stmt = null;
 		List<User> userlist = new ArrayList<>();
 		
@@ -67,14 +59,11 @@ public class DisplayUsers extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-*/		System.out.println("Display user end ...");
+		System.out.println("Display user end ...");
 		
 	}
 
-	private void getAllUsers() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
